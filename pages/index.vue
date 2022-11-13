@@ -1,8 +1,10 @@
 <template>
   <div class="main">
-    <h1 v-for="(c, index) in countriesForPage" :key="index">
-      Welcome to the homepage
-    </h1>
+    <Card
+      v-for="(country, index) in countriesForPage"
+      :key="index"
+      :cardData="country"
+    />
   </div>
 </template>
 
