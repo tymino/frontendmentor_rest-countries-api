@@ -6,4 +6,5 @@ export default defineNuxtConfig({
       title: 'Frontendmentor | Rest countries API',
     },
   },
+  css: ['@/layouts/global.css'],
 });

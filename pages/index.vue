@@ -1,8 +1,8 @@
 <template>
-  <div class="main">
+  <div class="main" v-if="countriesForPage">
     <Card
-      v-for="(country, index) in countriesForPage"
-      :key="index"
+      v-for="country in countriesForPage"
+      :key="country.name.official"
       :cardData="country"
     />
   </div>
@@ -12,9 +12,9 @@
 const { data: countries } = await useFetch(
   'https://restcountries.com/v3.1/all'
 );
-const countriesForPage = await countries.value.splice(0, 10);
+const countriesForPage = await countries.value.splice(0, 1);
 
-console.log('main page', countriesForPage);
+// add server api
 </script>
 
 <style lang="scss" scoped></style>
