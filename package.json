@@ -10,9 +10,6 @@
   "devDependencies": {
     "nuxt": "^3.0.0-rc.13",
     "nuxt-icon": "^0.1.7",
-    "sass": "^1.56.1",
-    "unplugin-icons": "^0.14.13",
-    "vite-plugin-dynamic-import": "^1.2.3",
-    "vite-svg-loader": "^3.6.0"
+    "sass": "^1.56.1"
   }
 }
