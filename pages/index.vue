@@ -1,7 +1,17 @@
 <template>
-  <div class="main" v-if="countriesForPage">
+  <div class="main" v-if="countries">
+    <Icon name="ion:md-arrow-round-back" />
+    <Icon class="main__svg" name="charm:chevron-down" />
+    <Icon name="ic:baseline-search" />
+    <Icon name="ri:moon-line" />
+    <Icon name="ri:moon-fill" />
+
+    <div class="main__svg">
+      <Icon name="ion:md-arrow-round-back" />
+    </div>
+
     <Card
-      v-for="country in countriesForPage"
+      v-for="country in countries"
       :key="country.name.official"
       :cardData="country"
     />
@@ -9,12 +19,13 @@
 </template>
 
 <script setup>
-const { data: countries } = await useFetch(
-  'https://restcountries.com/v3.1/all'
-);
-const countriesForPage = await countries.value.splice(0, 1);
-
-// add server api
+const { data: countries } = await useFetch('/api/countries');
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.main__svg {
+  width: 200px;
+  height: 200px;
+  color: red;
+}
+</style>
