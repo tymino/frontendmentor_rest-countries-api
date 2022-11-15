@@ -29,20 +29,22 @@
 }
 
 html {
+  background: var(--color-background);
   font-family: 'Nunito Sans', sans-serif;
   font-size: 14px;
 }
 
 :root {
-  --color-background: hsl(207, 26%, 17%);
-  --color-elements: hsl(209, 23%, 22%);
-  --color-input: hsl(209, 23%, 22%);
-  --color-text: hsl(0, 0%, 100%);
-}
-
-:root.dark-theme {
   --color-background: hsl(0, 0%, 98%);
   --color-elements: hsl(0, 0%, 100%);
   --color-input: hsl(0, 0%, 52%);
   --color-text: hsl(200, 15%, 8%);
+  --color-shadow: hsla(0, 0%, 0%, 0.219);
+}
+
+:root.dark-theme {
+  --color-background: hsl(207, 26%, 17%);
+  --color-elements: hsl(209, 23%, 22%);
+  --color-input: hsl(209, 23%, 22%);
+  --color-text: hsla(0, 0%, 100%);
 }
