@@ -2,7 +2,7 @@
   <div class="header">
     <div class="header__wrapper">
       <h1 class="header__title">Where in the world?</h1>
-      <Toggle class="header__toggle" />
+      <Toggle />
     </div>
   </div>
 </template>
@@ -28,8 +28,5 @@
 
 .header__title {
   font-size: 1.8rem;
-}
-
-.header__toggle {
 }
 </style>
