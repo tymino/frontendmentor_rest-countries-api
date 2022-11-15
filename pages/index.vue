@@ -1,13 +1,13 @@
 <template>
   <div class="main" v-if="countries">
-    <Icon name="ion:md-arrow-round-back" />
-    <Icon class="main__svg" name="charm:chevron-down" />
-    <Icon name="ic:baseline-search" />
-    <Icon name="ri:moon-line" />
-    <Icon name="ri:moon-fill" />
+    <Icon name="back" />
+    <Icon class="main__svg" name="chevron" />
+    <Icon name="search" />
+    <Icon name="moon" />
+    <Icon name="moonFill" />
 
     <div class="main__svg">
-      <Icon name="ion:md-arrow-round-back" />
+      <Icon name="back" />
     </div>
 
     <Card
