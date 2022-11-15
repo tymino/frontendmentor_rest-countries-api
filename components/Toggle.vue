@@ -34,16 +34,17 @@ export default {
   display: flex;
   align-items: center;
   cursor: pointer;
-}
-.toggle__icon {
-  width: 20px;
-  width: 20px;
-  /* color: var(--color-text); */
-}
-.toggle__name {
-  margin-left: 10px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  text-transform: capitalize;
+
+  &__icon {
+    width: 20px;
+    width: 20px;
+  }
+
+  &__name {
+    margin-left: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
 }
 </style>

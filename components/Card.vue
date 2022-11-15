@@ -44,13 +44,17 @@ export default {
 .card {
   display: flex;
   flex-direction: column;
-}
+  background: var(--color-elements);
+  box-shadow: 0px 0px 6px 2px var(--color-shadow);
+  color: var(--color-text);
 
-.card__flag {
-  width: 200px;
-  height: auto;
-}
-.card__name {
-  font-weight: 300;
+  &__flag {
+    width: 200px;
+    height: auto;
+  }
+
+  &__name {
+    font-weight: 300;
+  }
 }
 </style>

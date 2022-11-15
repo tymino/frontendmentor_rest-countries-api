@@ -1,20 +1,14 @@
 <template>
   <div class="main" v-if="countries">
-    <Icon name="back" />
-    <Icon class="main__svg" name="chevron" />
-    <Icon name="search" />
-    <Icon name="moon" />
-    <Icon name="moonFill" />
-
-    <div class="main__svg">
-      <Icon name="back" />
+    <div class="main__filters"></div>
+    <div class="main__list" v-if="countries">
+      <Card
+        class="main__item"
+        v-for="country in countries"
+        :key="country.name.official"
+        :cardData="country"
+      />
     </div>
-
-    <Card
-      v-for="country in countries"
-      :key="country.name.official"
-      :cardData="country"
-    />
   </div>
 </template>
 
@@ -23,9 +17,20 @@ const { data: countries } = await useFetch('/api/countries');
 </script>
 
 <style lang="scss" scoped>
-.main__svg {
-  width: 200px;
-  height: 200px;
-  color: red;
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: 80px;
+}
+
+/* .main__filters {
+} */
+
+.main__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  grid-auto-rows: min-content;
+  row-gap: 40px;
+  column-gap: 60px;
 }
 </style>
