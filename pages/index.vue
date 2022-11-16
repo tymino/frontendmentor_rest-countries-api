@@ -35,13 +35,45 @@ const { data: countries } = await useFetch('/api/countries');
 } */
 
 .main__list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  row-gap: 60px;
-  column-gap: auto;
-  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 
   &-item {
+    margin-bottom: 60px;
+
+    &:not(:nth-child(4n)) {
+      margin-right: 20px;
+    }
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+}
+
+@media (max-width: 1198px) {
+  .main__list {
+    &-item {
+      &:not(:nth-child(4n)) {
+        margin-right: 0px;
+      }
+      &:not(:nth-child(3n)) {
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 938px) {
+  .main__list {
+    &-item {
+      &:not(:nth-child(3n)) {
+        margin-right: 0px;
+      }
+      &:not(:nth-child(2n)) {
+        margin-right: 20px;
+      }
+    }
   }
 }
 </style>

@@ -3,9 +3,15 @@
     <img class="card__flag" :src="cardData.flags.png" alt="flag" />
     <div class="card__wrapper">
       <div class="card__name">{{ setName }}</div>
-      <div class="card__population">population: {{ setPopulation }}</div>
-      <div class="card__region">region: {{ setRegion }}</div>
-      <div class="card__capital">capital: {{ setCapital }}</div>
+      <div class="card__description card__description--population">
+        <span>population:</span> {{ setPopulation }}
+      </div>
+      <div class="card__description card__description--region">
+        <span>region:</span> {{ setRegion }}
+      </div>
+      <div class="card__description card__description--capital">
+        <span>capital:</span> {{ setCapital }}
+      </div>
     </div>
   </div>
 </template>
@@ -49,16 +55,34 @@ export default {
   width: 240px;
   background: var(--color-elements);
   box-shadow: 0px 0px 6px 2px var(--color-shadow);
-  border-radius: 6px;
+  border-radius: var(--border-radius);
   color: var(--color-text);
 
+  &__wrapper {
+    padding: 22px;
+  }
+
   &__flag {
-    /* width: 240px; */
-    height: auto;
+    width: 240px;
+    height: 140px;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
   }
 
   &__name {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  &__description {
+    margin-bottom: 4px;
+    font-size: 1rem;
     font-weight: 300;
+
+    & > span {
+      font-weight: 600;
+      text-transform: capitalize;
+    }
   }
 }
 </style>
