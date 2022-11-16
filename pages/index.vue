@@ -22,13 +22,10 @@ const { data: countries } = await useFetch('/api/countries');
 .main {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   width: 100%;
   max-width: 1440px;
   margin: 0px auto;
   padding: 20px 80px;
-
-  border: 1px solid red;
 }
 
 /* .main__filters {
@@ -43,7 +40,7 @@ const { data: countries } = await useFetch('/api/countries');
     margin-bottom: 60px;
 
     &:not(:nth-child(4n)) {
-      margin-right: 20px;
+      margin-right: 22px;
     }
     &:last-child {
       margin-right: 0px;
@@ -51,7 +48,7 @@ const { data: countries } = await useFetch('/api/countries');
   }
 }
 
-@media (max-width: 1198px) {
+@media (max-width: 1185px) {
   .main__list {
     &-item {
       &:not(:nth-child(4n)) {
@@ -64,7 +61,7 @@ const { data: countries } = await useFetch('/api/countries');
   }
 }
 
-@media (max-width: 938px) {
+@media (max-width: 919px) {
   .main__list {
     &-item {
       &:not(:nth-child(3n)) {

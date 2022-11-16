@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <NuxtLink class="card" :to="setLinkPath">
     <img class="card__flag" :src="cardData.flags.png" alt="flag" />
     <div class="card__wrapper">
       <div class="card__name">{{ setName }}</div>
@@ -13,7 +13,7 @@
         <span>capital:</span> {{ setCapital }}
       </div>
     </div>
-  </div>
+  </NuxtLink>
 </template>
 
 <script>
@@ -30,6 +30,9 @@ export default {
     },
   },
   computed: {
+    setLinkPath() {
+      return `/countries/${this.cardData.name.common.toLowerCase()}`;
+    },
     setName() {
       return this.cardData.name.official || '';
     },
@@ -57,6 +60,7 @@ export default {
   box-shadow: 0px 0px 6px 2px var(--color-shadow);
   border-radius: var(--border-radius);
   color: var(--color-text);
+  text-decoration: none;
 
   &__wrapper {
     padding: 22px;
