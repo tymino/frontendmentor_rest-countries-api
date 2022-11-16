@@ -1,10 +1,12 @@
 <template>
   <div class="card">
     <img class="card__flag" :src="cardData.flags.png" alt="flag" />
-    <div class="card__name">{{ setName }}</div>
-    <div class="card__population">population: {{ setPopulation }}</div>
-    <div class="card__region">region: {{ setRegion }}</div>
-    <div class="card__capital">capital: {{ setCapital }}</div>
+    <div class="card__wrapper">
+      <div class="card__name">{{ setName }}</div>
+      <div class="card__population">population: {{ setPopulation }}</div>
+      <div class="card__region">region: {{ setRegion }}</div>
+      <div class="card__capital">capital: {{ setCapital }}</div>
+    </div>
   </div>
 </template>
 
@@ -44,12 +46,14 @@ export default {
 .card {
   display: flex;
   flex-direction: column;
+  width: 240px;
   background: var(--color-elements);
   box-shadow: 0px 0px 6px 2px var(--color-shadow);
+  border-radius: 6px;
   color: var(--color-text);
 
   &__flag {
-    width: 200px;
+    /* width: 240px; */
     height: auto;
   }
 
