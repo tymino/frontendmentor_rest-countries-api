@@ -32,45 +32,31 @@ const { data: countries } = await useFetch('/api/countries');
 } */
 
 .main__list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 240px);
   justify-content: space-between;
 
   &-item {
     margin-bottom: 60px;
-
-    &:not(:nth-child(4n)) {
-      margin-right: 22px;
-    }
-    &:last-child {
-      margin-right: 0px;
-    }
   }
 }
 
-@media (max-width: 1185px) {
+@media (max-width: 1160px) {
   .main__list {
-    &-item {
-      &:not(:nth-child(4n)) {
-        margin-right: 0px;
-      }
-      &:not(:nth-child(3n)) {
-        margin-right: 20px;
-      }
-    }
+    grid-template-columns: repeat(3, 240px);
   }
 }
 
-@media (max-width: 919px) {
+@media (max-width: 910px) {
   .main__list {
-    &-item {
-      &:not(:nth-child(3n)) {
-        margin-right: 0px;
-      }
-      &:not(:nth-child(2n)) {
-        margin-right: 20px;
-      }
-    }
+    grid-template-columns: repeat(2, 240px);
+  }
+}
+@media (max-width: 670px) {
+  .main__list {
+    grid-template-columns: repeat(1, 240px);
+    justify-content: center;
+
   }
 }
 </style>
