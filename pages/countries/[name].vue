@@ -15,7 +15,7 @@
       <div class="description__col--left">
         <div class="description__native-name">
           <span>Native Name:</span>
-          {{ }}
+          {{}}
         </div>
       </div>
       <div class="description__col--right"></div>
@@ -27,7 +27,9 @@
 <script setup>
 const route = useRoute();
 const PARAM_NAME = route.params.name;
-const { data: country } = await useFetch(`/api/country?name=${PARAM_NAME}`);
+const { data: country } = await useFetch(`/api/countries/${PARAM_NAME}`, {
+  initialCache: false,
+});
 
 // console.log(country.flags.png);
 </script>

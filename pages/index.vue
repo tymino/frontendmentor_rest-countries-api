@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-const { data: countries } = await useFetch('/api/countries');
+const { data: countries } = await useFetch('/api/all');
 </script>
 
 <style lang="scss" scoped>
@@ -56,7 +56,6 @@ const { data: countries } = await useFetch('/api/countries');
   .main__list {
     grid-template-columns: repeat(1, 240px);
     justify-content: center;
-
   }
 }
 </style>
