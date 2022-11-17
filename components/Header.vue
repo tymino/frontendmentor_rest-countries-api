@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="header__content">
-      <h1 class="header__content-title">Where in the world?</h1>
+      <div class="header__content-title">Where in the world?</div>
       <Toggle />
     </div>
   </div>
@@ -26,6 +26,7 @@
 
     &-title {
       font-size: 1.8rem;
+      font-weight: 800;
     }
   }
 }
