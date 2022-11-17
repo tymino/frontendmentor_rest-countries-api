@@ -1,0 +1,45 @@
+<template>
+  <NuxtLink class="link" :to="linkTo">
+    <Icon class="link__icon" v-if="linkIconName" :name="linkIconName" />
+    <div class="link__name">{{ linkName }}</div>
+  </NuxtLink>
+</template>
+
+<script>
+export default {
+  props: {
+    linkTo: {
+      type: String,
+      default: '/',
+    },
+    linkIconName: {
+      type: String,
+      default: '',
+    },
+    linkName: {
+      type: String,
+      default: 'link',
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.link {
+  display: flex;
+  align-items: center;
+  padding: 6px 14px;
+  background: var(--color-elements);
+  box-shadow: 0px 0px 6px 2px var(--color-shadow);
+  color: var(--color-text);
+  text-decoration: none;
+
+  &__icon {
+    margin-right: 10px;
+  }
+
+  &__name {
+    text-transform: capitalize;
+  }
+}
+</style>
