@@ -1,24 +1,35 @@
 <template>
   <div class="country">
-    <!-- {{ country }} -->
+    {{ country }}
     <MyLink
       class="country__link-home"
       linkTo="/"
       linkIconName="back"
       linkName="back"
     />
-    <div class="country__flag"></div>
-    <div class="country__description description"></div>
+
+    <!-- <img class="country__flag" :src="country.flags.png" alt="flag" /> -->
+
+    <div class="country__description description">
+      <!-- <div class="description__header">{{ country.name.common }}</div> -->
+      <div class="description__col--left">
+        <div class="description__native-name">
+          <span>Native Name:</span>
+          {{ }}
+        </div>
+      </div>
+      <div class="description__col--right"></div>
+      <div class="description__footer"></div>
+    </div>
   </div>
 </template>
 
 <script setup>
 const route = useRoute();
-
-const MAIN_URL = `https://restcountries.com/v3.1/name`;
 const PARAM_NAME = route.params.name;
+const { data: country } = await useFetch(`/api/country?name=${PARAM_NAME}`);
 
-const { data: country } = await useFetch(`${MAIN_URL}/${PARAM_NAME}`);
+// console.log(country.flags.png);
 </script>
 
 <style lang="scss" scoped>
@@ -29,6 +40,7 @@ const { data: country } = await useFetch(`${MAIN_URL}/${PARAM_NAME}`);
 
   &__link-home {
     justify-self: start;
+    align-self: start;
   }
 
   &__flag {

@@ -28,8 +28,9 @@ export default {
 .link {
   display: flex;
   align-items: center;
-  padding: 6px 14px;
+  padding: 6px 24px;
   background: var(--color-elements);
+  border-radius: var(--border-radius);
   box-shadow: 0px 0px 6px 2px var(--color-shadow);
   color: var(--color-text);
   text-decoration: none;
@@ -39,6 +40,8 @@ export default {
   }
 
   &__name {
+    margin-right: 6px;
+    font-weight: 600;
     text-transform: capitalize;
   }
 }
