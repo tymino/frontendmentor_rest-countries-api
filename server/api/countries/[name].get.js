@@ -1,4 +1,5 @@
 import { myFetch } from '~/server/utils/myFetch';
+import { checkBordersCountry } from '~/server/utils/checkBordersCountry';
 
 export default defineEventHandler(async (event) => {
   const param = event.context.params.name;
@@ -22,17 +23,8 @@ export default defineEventHandler(async (event) => {
         tld,
         currencies,
         languages,
+        borders,
       } = country[0];
-
-      const countryBorders = country[0].borders.map((name) => {
-        const countryObj = countries.find((item) => item.cca3 === name);
-
-        if (countryObj) {
-          return countryObj.name.common;
-        } else {
-          return name;
-        }
-      });
 
       return {
         flag: flags.png,
@@ -45,12 +37,12 @@ export default defineEventHandler(async (event) => {
         topLevelDomain: tld,
         currencies: Object.values(currencies)[0].name,
         languages: Object.values(languages),
-        borders: countryBorders,
+        borders: checkBordersCountry(borders, countries),
       };
     }
   );
 
-  console.log(response);
+  // console.log(borders);
 
   return response;
 });
