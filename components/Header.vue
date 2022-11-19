@@ -2,7 +2,7 @@
   <div class="header">
     <div class="header__content">
       <div class="header__content-title">Where in the world?</div>
-      <Toggle />
+      <UIToggle />
     </div>
   </div>
 </template>

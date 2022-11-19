@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink class="link" :to="linkTo">
+  <NuxtLink class="link" :to="lowerCaseLink">
     <Icon class="link__icon" v-if="linkIconName" :name="linkIconName" />
     <div class="link__name">{{ linkName }}</div>
   </NuxtLink>
@@ -19,6 +19,11 @@ export default {
     linkName: {
       type: String,
       default: 'link',
+    },
+  },
+  computed: {
+    lowerCaseLink() {
+      return this.linkTo.toLowerCase();
     },
   },
 };

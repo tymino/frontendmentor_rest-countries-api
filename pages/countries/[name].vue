@@ -1,6 +1,6 @@
 <template>
   <div class="country">
-    <MyLink
+    <UILink
       class="country__link-home"
       linkTo="/"
       linkIconName="back"
@@ -51,7 +51,7 @@
         <span>border countries:</span>
 
         <div class="description__footer-links">
-          <MyLink
+          <UILink
             v-for="name in country.borders"
             :key="name"
             :linkTo="name"
