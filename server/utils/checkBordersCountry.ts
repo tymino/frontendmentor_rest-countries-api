@@ -1,4 +1,9 @@
-export const checkBordersCountry = (borders, countries) => {
+import IApiResponse from '~/types/IApiResponse';
+
+const checkBordersCountry = (
+  borders: string[],
+  countries: IApiResponse[]
+): string[] => {
   if (!borders) return [];
 
   return borders.map((name) => {
@@ -11,3 +16,5 @@ export const checkBordersCountry = (borders, countries) => {
     }
   });
 };
+
+export default checkBordersCountry;

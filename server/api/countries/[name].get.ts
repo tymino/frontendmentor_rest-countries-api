@@ -1,8 +1,7 @@
-import { myFetch } from '~/server/utils/myFetch';
-import { checkBordersCountry } from '~/server/utils/checkBordersCountry';
+import { checkBordersCountry, myFetch } from '~/server/utils';
 
 export default defineEventHandler(async (event) => {
-  const param = event.context.params.name;
+  const param = event.context.params.name as string;
   const MAIN_URL = `https://restcountries.com/v3.1/name/${param}`;
   const ALL_DATA_URL = 'https://restcountries.com/v3.1/all';
 
@@ -29,7 +28,9 @@ export default defineEventHandler(async (event) => {
       return {
         flag: flags.png,
         header: name.common,
-        nativeName: Object.values(name.nativeName)[0].common,
+        nativeName: Object.keys(name.nativeName).map(
+          (key) => name.nativeName[key]
+        )[0].common as string,
         population: population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
         region: region,
         subRegion: subregion,
@@ -41,8 +42,6 @@ export default defineEventHandler(async (event) => {
       };
     }
   );
-
-  // console.log(borders);
 
   return response;
 });
