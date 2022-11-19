@@ -26,7 +26,7 @@
         </div>
         <div class="description__line">
           <span>sub region:</span>
-          {{ country.subregion }}
+          {{ country.subRegion }}
         </div>
         <div class="description__line">
           <span>capital:</span>

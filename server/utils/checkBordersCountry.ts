@@ -6,14 +6,10 @@ const checkBordersCountry = (
 ): string[] => {
   if (!borders) return [];
 
-  return borders.map((name) => {
-    const country = countries.find((item) => item.cca3 === name);
+  return borders.map((countryName) => {
+    const country = countries.find((country) => country.cca3 === countryName);
 
-    if (country) {
-      return country.name.common;
-    } else {
-      return name;
-    }
+    return country ? country.name.common : countryName;
   });
 };
 

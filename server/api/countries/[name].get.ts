@@ -1,11 +1,11 @@
 import { checkBordersCountry, myFetch } from '~/server/utils';
 
 export default defineEventHandler(async (event) => {
-  const param = event.context.params.name as string;
-  const MAIN_URL = `https://restcountries.com/v3.1/name/${param}`;
-  const ALL_DATA_URL = 'https://restcountries.com/v3.1/all';
+  const param: string = event.context.params.name;
+  const MAIN_URL: string = `https://restcountries.com/v3.1/name/${param}`;
+  const ALL_DATA_URL: string = 'https://restcountries.com/v3.1/all';
 
-  const currentCountry = await myFetch(MAIN_URL);
+  const [currentCountry] = await myFetch(MAIN_URL);
   const allCountries = await myFetch(ALL_DATA_URL);
 
   const response = await Promise.all([currentCountry, allCountries]).then(
@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
         currencies,
         languages,
         borders,
-      } = country[0];
+      } = country;
 
       return {
         flag: flags.png,
@@ -42,6 +42,8 @@ export default defineEventHandler(async (event) => {
       };
     }
   );
+
+  console.log(response);
 
   return response;
 });
