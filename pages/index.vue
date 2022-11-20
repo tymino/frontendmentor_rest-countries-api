@@ -6,7 +6,7 @@
         <Card
           class="main__list-item"
           v-for="country in countries"
-          :key="country.name.official"
+          :key="country.header"
           :cardData="country"
         />
       </div>

@@ -1,16 +1,16 @@
 <template>
   <NuxtLink class="card" :to="setLinkPath">
-    <img class="card__flag" :src="cardData.flags.png" alt="flag" />
+    <img class="card__flag" :src="cardData.flag" alt="flag" />
     <div class="card__wrapper">
-      <div class="card__name">{{ setName }}</div>
+      <div class="card__name">{{ cardData.header }}</div>
       <div class="card__description card__description--population">
-        <span>population:</span> {{ setPopulation }}
+        <span>population:</span> {{ cardData.population }}
       </div>
       <div class="card__description card__description--region">
-        <span>region:</span> {{ setRegion }}
+        <span>region:</span> {{ cardData.region }}
       </div>
       <div class="card__description card__description--capital">
-        <span>capital:</span> {{ setCapital }}
+        <span>capital:</span> {{ cardData.capital }}
       </div>
     </div>
   </NuxtLink>
@@ -31,21 +31,7 @@ export default {
   },
   computed: {
     setLinkPath() {
-      return `/countries/${this.cardData.name.common.toLowerCase()}`;
-    },
-    setName() {
-      return this.cardData.name.official || '';
-    },
-    setPopulation() {
-      return this.cardData.population
-        .toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    },
-    setRegion() {
-      return this.cardData.region || '';
-    },
-    setCapital() {
-      return this.cardData.capital[0] || '';
+      return `/countries/${this.cardData.header.toLowerCase()}`;
     },
   },
 };

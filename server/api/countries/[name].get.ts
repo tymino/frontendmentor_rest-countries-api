@@ -1,4 +1,8 @@
-import { checkBordersCountry, myFetch } from '~/server/utils';
+import {
+  checkBordersCountry,
+  convertPopulation,
+  myFetch,
+} from '~/server/utils';
 
 export default defineEventHandler(async (event) => {
   const param: string = event.context.params.name;
@@ -31,7 +35,7 @@ export default defineEventHandler(async (event) => {
         nativeName: Object.keys(name.nativeName).map(
           (key) => name.nativeName[key]
         )[0].common as string,
-        population: population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+        population: convertPopulation(population),
         region: region,
         subRegion: subregion,
         capital: capital[0],
