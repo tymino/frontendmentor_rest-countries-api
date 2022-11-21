@@ -11,47 +11,51 @@
 
     <div class="country__description description">
       <h1 class="description__header">{{ country.header }}</h1>
-      <div class="description__col--left">
-        <div class="description__line">
-          <span>native name:</span>
-          {{ country.nativeName }}
+      <div class="description__col">
+        <div class="description__col--left">
+          <div class="description__line">
+            <span>native name:</span>
+            {{ country.nativeName }}
+          </div>
+          <div class="description__line">
+            <span>population:</span>
+            {{ country.population }}
+          </div>
+          <div class="description__line">
+            <span>region:</span>
+            {{ country.region }}
+          </div>
+          <div class="description__line">
+            <span>sub region:</span>
+            {{ country.subRegion }}
+          </div>
+          <div class="description__line">
+            <span>capital:</span>
+            {{ country.capital }}
+          </div>
         </div>
-        <div class="description__line">
-          <span>population:</span>
-          {{ country.population }}
-        </div>
-        <div class="description__line">
-          <span>region:</span>
-          {{ country.region }}
-        </div>
-        <div class="description__line">
-          <span>sub region:</span>
-          {{ country.subRegion }}
-        </div>
-        <div class="description__line">
-          <span>capital:</span>
-          {{ country.capital }}
+        <div class="description__col--right">
+          <div class="description__line">
+            <span>top level domain:</span>
+            {{ country.topLevelDomain }}
+          </div>
+          <div class="description__line">
+            <span>currencies:</span>
+            {{ country.currencies }}
+          </div>
+          <div class="description__line">
+            <span>languages:</span>
+            {{ country.languages }}
+          </div>
         </div>
       </div>
-      <div class="description__col--right">
-        <div class="description__line">
-          <span>top level domain:</span>
-          {{ country.topLevelDomain }}
-        </div>
-        <div class="description__line">
-          <span>currencies:</span>
-          {{ country.currencies }}
-        </div>
-        <div class="description__line">
-          <span>languages:</span>
-          {{ country.languages }}
-        </div>
-      </div>
+
       <div class="description__footer">
-        <span>border countries:</span>
+        <div class="description__footer-name">border countries:</div>
 
         <div class="description__footer-links">
           <UILink
+            class="description__footer-links-item"
             v-for="name in country.borders"
             :key="name"
             :linkTo="name"
@@ -94,8 +98,11 @@ const { data: country } = await useFetch(`/api/countries/${PARAM_NAME}`, {
   &__flag {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
-    width: 84%;
+    width: 537px;
+    height: 357px;
+    margin-right: 20px;
   }
+  
   &__description {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
@@ -103,18 +110,49 @@ const { data: country } = await useFetch(`/api/countries/${PARAM_NAME}`, {
 }
 
 .description {
+  color: var(--color-text);
+
   &__header {
+    margin: 20px 0px;
   }
   &__col {
-    &--left {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    /* &--left {
     }
     &--right {
-    }
+    } */
   }
   &__line {
+    margin-bottom: 8px;
+    font-weight: 300;
+
     & > span {
       font-weight: 600;
       text-transform: capitalize;
+    }
+  }
+
+  &__footer {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    row-gap: 10px;
+
+    &-name {
+      margin-right: 20px;
+      padding-top: 6px;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+    &-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+
+      &-item:not(:last-child) {
+        margin: 0px 10px 10px 0px;
+      }
     }
   }
 }
