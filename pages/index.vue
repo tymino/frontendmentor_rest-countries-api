@@ -1,7 +1,9 @@
 <template>
   <div class="main" v-if="countries">
     <div class="main__wrapper">
-      <div class="main__filters"></div>
+      <div class="main__filters">
+        <UISearch />
+      </div>
       <div class="main__list" v-if="countries">
         <Card
           class="main__list-item"
@@ -25,11 +27,13 @@ const { data: countries } = await useFetch('/api/all');
   width: 100%;
   max-width: 1440px;
   margin: 0px auto;
-  padding: 20px 80px;
+  margin-bottom: 20px;
+  padding: 0px 80px;
 }
 
-/* .main__filters {
-} */
+.main__filters {
+  margin: 40px 0px;
+}
 
 .main__list {
   display: grid;
