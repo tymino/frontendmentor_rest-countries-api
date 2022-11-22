@@ -27,7 +27,7 @@ const {
   $fetch(`/api/all?search=${searchValue.value}`)
 );
 
-console.log('watch', countries);
+// console.log('watch', countries);
 
 watch(searchValue, (newPosts) => {
   console.log('watch', newPosts);

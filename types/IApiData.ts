@@ -1,4 +1,4 @@
-export default interface IApiResponse {
+export default interface IApiData {
   name: {
     common: string;
     official: string;
