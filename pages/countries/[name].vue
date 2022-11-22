@@ -1,5 +1,6 @@
 <template>
-  <div class="country">
+  <div v-if="pending">Loading...</div>
+  <div class="country" v-else>
     <UILink
       class="country__link-home"
       linkTo="/"
@@ -70,9 +71,12 @@
 <script setup>
 const route = useRoute();
 const PARAM_NAME = route.params.name;
-const { data: country } = await useFetch(`/api/countries/${PARAM_NAME}`, {
-  initialCache: false,
-});
+const { data: country, pending } = useLazyFetch(
+  `/api/countries/${PARAM_NAME}`,
+  {
+    initialCache: false,
+  }
+);
 
 // console.log(country);
 </script>
@@ -102,7 +106,7 @@ const { data: country } = await useFetch(`/api/countries/${PARAM_NAME}`, {
     height: 357px;
     margin-right: 20px;
   }
-  
+
   &__description {
     grid-column: 2 / 3;
     grid-row: 2 / 3;

@@ -6,9 +6,9 @@ import {
 
 export default defineEventHandler(async (event) => {
   const paramName: string = event.context.params.name;
+
   const MAIN_URL: string = `https://restcountries.com/v3.1/name/${paramName}`;
   const ALL_DATA_URL: string = 'https://restcountries.com/v3.1/all';
-
   const [currentCountry] = await myFetch(MAIN_URL);
   const allCountries = await myFetch(ALL_DATA_URL);
 
@@ -46,8 +46,6 @@ export default defineEventHandler(async (event) => {
       };
     }
   );
-
-  // console.log('server', response);
 
   return response;
 });

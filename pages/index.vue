@@ -4,7 +4,8 @@
       <div class="main__filters">
         <UISearch v-model:searchValue="searchValue" />
       </div>
-      <div class="main__list" v-if="countries">
+      <div class="main__load" v-if="pending">Loading...</div>
+      <div class="main__list" v-else>
         <Card
           class="main__list-item"
           v-for="country in countries"
@@ -27,7 +28,7 @@ const {
   $fetch(`/api/all?search=${searchValue.value}`)
 );
 
-// console.log('watch', countries);
+console.log('watch', pending.value);
 
 watch(searchValue, (newPosts) => {
   console.log('watch', newPosts);

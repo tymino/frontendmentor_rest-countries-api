@@ -1,8 +1,8 @@
-import IApiResponse from '~/types/IApiResponse';
+import IApiData from '~/types/IApiData';
 
 export default function checkBordersCountry(
   borders: string[],
-  countries: IApiResponse[]
+  countries: IApiData[]
 ): string[] {
   if (!borders) return [];
 

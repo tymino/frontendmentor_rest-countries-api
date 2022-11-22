@@ -10,10 +10,9 @@ interface IResponseForIndexPage {
 
 export default defineEventHandler(async (event) => {
   const URL = 'https://restcountries.com/v3.1/all';
+  const countries = await myFetch(URL);
 
   const { search } = useQuery(event);
-
-  const countries = await myFetch(URL);
 
   const response = countries.reduce(
     (filtered: IResponseForIndexPage[], country) => {
@@ -40,6 +39,5 @@ export default defineEventHandler(async (event) => {
 
   console.log('server', response);
 
-  // return response.slice(0, 6);
   return response;
 });
