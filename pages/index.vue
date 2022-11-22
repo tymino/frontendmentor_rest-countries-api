@@ -2,7 +2,7 @@
   <div class="main" v-if="countries">
     <div class="main__wrapper">
       <div class="main__filters">
-        <UISearch />
+        <UISearch v-model:searchValue="searchValue" />
       </div>
       <div class="main__list" v-if="countries">
         <Card
@@ -17,7 +17,22 @@
 </template>
 
 <script setup>
-const { data: countries } = await useFetch('/api/all');
+const searchValue = ref('');
+
+const {
+  data: countries,
+  pending,
+  error,
+} = useLazyAsyncData('countries', () =>
+  $fetch(`/api/all?search=${searchValue.value}`)
+);
+
+console.log('watch', countries);
+
+watch(searchValue, (newPosts) => {
+  console.log('watch', newPosts);
+  refreshNuxtData('countries');
+});
 </script>
 
 <style lang="scss" scoped>

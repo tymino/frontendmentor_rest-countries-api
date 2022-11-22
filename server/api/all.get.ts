@@ -1,7 +1,11 @@
 import { convertPopulation, myFetch } from '~/server/utils';
 
-export default defineEventHandler(async () => {
+export default defineEventHandler(async (event) => {
   const URL = 'https://restcountries.com/v3.1/all';
+
+  const { search } = useQuery(event);
+
+  console.log('server', search);
 
   const countries = await myFetch(URL);
 

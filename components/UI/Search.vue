@@ -5,12 +5,20 @@
       class="search__input"
       type="text"
       placeholder="Search for a country..."
+      :value="searchValue"
+      @input="$emit('update:searchValue', $event.target.value)"
     />
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    searchValue: {
+      type: String,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
