@@ -37,7 +37,7 @@ export default defineEventHandler(async (event) => {
     []
   );
 
-  console.log('server', response);
+  // console.log('server', response);
 
   return response;
 });
