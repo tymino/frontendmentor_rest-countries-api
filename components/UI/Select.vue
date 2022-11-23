@@ -37,8 +37,15 @@ export default {
 <style lang="scss" scoped>
 .container {
   display: flex;
-  padding: 20px 30px;
+  padding: 14px 30px;
   background: var(--color-elements);
   border-radius: var(--border-radius);
+  box-shadow: 0px 2px 4px 0px var(--color-shadow);
+
+  &__select {
+    border: none;
+    background: var(--color-elements);
+    outline: none;
+  }
 }
 </style>
