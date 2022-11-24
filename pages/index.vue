@@ -25,10 +25,11 @@ const sortSelected = ref('');
 const sortOptions = ref([
   { value: '', name: 'Filter by Region' },
   { value: 'Africa', name: 'Africa' },
-  { value: 'America', name: 'America' },
+  { value: 'Americas', name: 'America' },
   { value: 'Asia', name: 'Asia' },
   { value: 'Europe', name: 'Europe' },
   { value: 'Oceania', name: 'Oceania' },
+  { value: 'Antarctic', name: 'Antarctic' },
 ]);
 
 const { data: countries, pending } = useLazyAsyncData('countries', () =>

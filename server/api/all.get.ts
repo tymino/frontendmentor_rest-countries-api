@@ -19,9 +19,12 @@ export default defineEventHandler(async (event) => {
 
   const response = countries.reduce(
     (filtered: IResponseForIndexPage[], country) => {
-      const testReg = new RegExp(`${search}`, 'i');
+      const searchRegEx = new RegExp(`${search}`, 'i');
 
-      if (testReg.test(country.name.common)) {
+      const isCheckRegEx = searchRegEx.test(country.name.common);
+      const hasRegion = country.region === filter || filter === '';
+
+      if (isCheckRegEx && hasRegion) {
         const { flags, name, population, region, capital } = country;
 
         const newCountry = {
