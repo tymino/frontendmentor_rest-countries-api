@@ -11,7 +11,9 @@
           class="select__options-item"
           v-for="option in options"
           :key="option.value"
-          :value="option.value"
+          :data-value="option.value"
+          :data-name="option.name"
+          @click="changeOption"
         >
           {{ option.name }}
         </div>
@@ -24,22 +26,25 @@
 export default {
   data() {
     return {
-      isOpenSelect: true,
+      isOpenSelect: false,
       selectedOption: 'default',
     };
   },
   props: {
     options: {
       type: Array,
-      default: () => [{ value: 'default', name: 'default' }],
+      default: () => [{ value: 'default', name: 'Empty field' }],
     },
   },
   methods: {
     handleOpenOfOptions() {
       this.isOpenSelect = !this.isOpenSelect;
     },
-    changeSelect(event) {
-      this.$emit('update:selectedValue', event.target.value);
+    changeOption(event) {
+      const { value, name } = event.target.dataset;
+
+      this.selectedOption = name;
+      this.$emit('update:option', value);
     },
   },
   mounted() {

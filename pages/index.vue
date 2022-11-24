@@ -3,7 +3,7 @@
     <div class="main__wrapper">
       <div class="main__filters">
         <UISearch v-model:searchValue="searchValue" />
-        <UISelect :options="sortOptions" v-model:selectedValue="sortSelected" />
+        <UISelect :options="sortOptions" v-model:option="sortSelected" />
       </div>
       <div class="main__load" v-if="pending">Loading...</div>
       <div class="main__list" v-else>
@@ -22,7 +22,7 @@
 const searchValue = ref('');
 const sortSelected = ref('');
 const sortOptions = ref([
-  { value: 'default', name: 'Filter by Region' },
+  { value: '', name: 'Filter by Region' },
   { value: 'Africa', name: 'Africa' },
   { value: 'America', name: 'America' },
   { value: 'Asia', name: 'Asia' },
@@ -31,15 +31,15 @@ const sortOptions = ref([
 ]);
 
 const { data: countries, pending } = useLazyAsyncData('countries', () =>
-  $fetch(`/api/all?search=${searchValue.value}`)
+  $fetch(`/api/all?search=${searchValue.value}&filter=${sortSelected}`)
 );
 
 // console.log('watch', pending.value);
 
-watch(sortSelected, (value) => {
-  console.log('watch', value);
-  // refreshNuxtData('countries');
-});
+// watch(sortSelected, (value) => {
+//   console.log('watch', value);
+//   // refreshNuxtData('countries');
+// });
 </script>
 
 <style lang="scss" scoped>
