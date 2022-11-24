@@ -3,7 +3,7 @@
     <div class="main__wrapper">
       <div class="main__filters">
         <UISearch v-model:searchValue="searchValue" />
-        <UISelect :arrayOfOptions="selectOptions" v-model:activeValue="selectActive"/>
+        <UISelect :options="sortOptions" v-model:selectedValue="sortSelected" />
       </div>
       <div class="main__load" v-if="pending">Loading...</div>
       <div class="main__list" v-else>
@@ -20,8 +20,15 @@
 
 <script setup>
 const searchValue = ref('');
-const selectOptions = ref(['Africa', 'America', 'Asia', 'Europe', 'Oceania']);
-const selectActive = ref('');
+const sortSelected = ref('');
+const sortOptions = ref([
+  { value: 'default', name: 'Filter by Region' },
+  { value: 'Africa', name: 'Africa' },
+  { value: 'America', name: 'America' },
+  { value: 'Asia', name: 'Asia' },
+  { value: 'Europe', name: 'Europe' },
+  { value: 'Oceania', name: 'Oceania' },
+]);
 
 const { data: countries, pending } = useLazyAsyncData('countries', () =>
   $fetch(`/api/all?search=${searchValue.value}`)
@@ -29,9 +36,9 @@ const { data: countries, pending } = useLazyAsyncData('countries', () =>
 
 // console.log('watch', pending.value);
 
-watch(searchValue, (newPosts) => {
-  // console.log('watch', newPosts);
-  refreshNuxtData('countries');
+watch(sortSelected, (value) => {
+  console.log('watch', value);
+  // refreshNuxtData('countries');
 });
 </script>
 
