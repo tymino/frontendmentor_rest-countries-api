@@ -12,7 +12,9 @@ export default defineEventHandler(async (event) => {
   const URL = 'https://restcountries.com/v3.1/all';
   const countries = await myFetch(URL);
 
-  const { search } = useQuery(event);
+  const { search, filter } = useQuery(event);
+
+  console.log('server', filter);
 
   const response = countries.reduce(
     (filtered: IResponseForIndexPage[], country) => {

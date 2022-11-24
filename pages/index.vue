@@ -31,15 +31,15 @@ const sortOptions = ref([
 ]);
 
 const { data: countries, pending } = useLazyAsyncData('countries', () =>
-  $fetch(`/api/all?search=${searchValue.value}&filter=${sortSelected}`)
+  $fetch(`/api/all?search=${searchValue.value}&filter=${sortSelected.value}`)
 );
 
-// console.log('watch', pending.value);
 
-// watch(sortSelected, (value) => {
-//   console.log('watch', value);
-//   // refreshNuxtData('countries');
-// });
+
+const refreshCountries = () => refreshNuxtData('countries');
+
+watch(searchValue, refreshCountries);
+watch(sortSelected, refreshCountries);
 </script>
 
 <style lang="scss" scoped>
