@@ -14,13 +14,14 @@ export default defineEventHandler(async (event) => {
 
   const { search, filter } = useQuery(event);
 
-  console.log('server', filter);
+  // console.log('server search:', search);
+  // console.log('server filter:', filter);
 
   const response = countries.reduce(
     (filtered: IResponseForIndexPage[], country) => {
       const testReg = new RegExp(`${search}`, 'i');
 
-      if (country.name.common.match(testReg)) {
+      if (testReg.test(country.name.common)) {
         const { flags, name, population, region, capital } = country;
 
         const newCountry = {

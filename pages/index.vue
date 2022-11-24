@@ -19,6 +19,7 @@
 </template>
 
 <script setup>
+const timer = ref(null);
 const searchValue = ref('');
 const sortSelected = ref('');
 const sortOptions = ref([
@@ -34,9 +35,17 @@ const { data: countries, pending } = useLazyAsyncData('countries', () =>
   $fetch(`/api/all?search=${searchValue.value}&filter=${sortSelected.value}`)
 );
 
+const refreshCountries = () => {
+  const timeout = 1000;
 
+  if (timer.value) {
+    clearTimeout(timer.value);
+  }
 
-const refreshCountries = () => refreshNuxtData('countries');
+  timer.value = setTimeout(() => {
+    refreshNuxtData('countries');
+  }, timeout);
+};
 
 watch(searchValue, refreshCountries);
 watch(sortSelected, refreshCountries);
