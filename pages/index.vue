@@ -15,11 +15,19 @@
         />
       </div>
     </div>
+    <UIButton v-if="isButtonVisible">Load</UIButton>
   </div>
 </template>
 
 <script setup>
 const timer = ref(null);
+const isLoadAll = ref(false);
+
+// ref: numberOfItemsInBlock = 12;
+// response header: length: N
+// check: numberOfItemsInBlock <= length
+// const isButtonVisible = ref(true);
+
 const searchValue = ref('');
 const sortSelected = ref('');
 const sortOptions = ref([
@@ -33,11 +41,13 @@ const sortOptions = ref([
 ]);
 
 const { data: countries, pending } = useLazyAsyncData('countries', () =>
-  $fetch(`/api/all?search=${searchValue.value}&filter=${sortSelected.value}`)
+  $fetch(
+    `/api/all?search=${searchValue.value}&filter=${sortSelected.value}&loadAll=${isLoadAll.value}`
+  )
 );
 
 const refreshCountries = () => {
-  const timeout = 1000;
+  const TIME_OUT = 1000;
 
   if (timer.value) {
     clearTimeout(timer.value);
@@ -45,8 +55,13 @@ const refreshCountries = () => {
 
   timer.value = setTimeout(() => {
     refreshNuxtData('countries');
-  }, timeout);
+  }, TIME_OUT);
 };
+
+// watch(countries, () => {
+//   console.log('watch', countries.value.length);
+//   isButtonVisible.value = countries.value.length > 56;
+// });
 
 watch(searchValue, refreshCountries);
 watch(sortSelected, refreshCountries);

@@ -9,22 +9,25 @@ interface IResponseForIndexPage {
 }
 
 export default defineEventHandler(async (event) => {
-  const URL = 'https://restcountries.com/v3.1/all';
-  const countries = await myFetch(URL);
+  const { search, filter, loadAll } = useQuery(event);
 
-  const { search, filter } = useQuery(event);
+  const API_URL = {
+    all: 'https://restcountries.com/v3.1/all',
+    region: `https://restcountries.com/v3.1/region/${filter}`,
+  };
 
-  // console.log('server search:', search);
-  // console.log('server filter:', filter);
+  const MAIN_URL = filter !== '' ? API_URL.region : API_URL.all;
+
+  const countries = await myFetch(MAIN_URL);
+
+  console.log('server load all:', filter);
 
   const response = countries.reduce(
     (filtered: IResponseForIndexPage[], country) => {
       const searchRegEx = new RegExp(`${search}`, 'i');
-
       const isCheckRegEx = searchRegEx.test(country.name.common);
-      const hasRegion = country.region === filter || filter === '';
 
-      if (isCheckRegEx && hasRegion) {
+      if (isCheckRegEx) {
         const { flags, name, population, region, capital } = country;
 
         const newCountry = {
