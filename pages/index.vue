@@ -1,49 +1,40 @@
 <template>
   <div class="main" v-if="countries">
-    <div class="main__wrapper">
-      <div class="main__filters">
+    <div class="main__container container">
+      <div class="container__filters">
         <UISearch v-model:searchValue="searchValue" />
         <UISelect :options="sortOptions" v-model:option="sortSelected" />
       </div>
-      <div class="main__load" v-if="pending">Loading...</div>
-      <div class="main__list" v-else>
+      <div class="container__loading" v-if="pending">Loading...</div>
+      <div class="container__list" v-else>
         <Card
-          class="main__list-item"
+          class="container__list-item"
           v-for="country in countries"
           :key="country.header"
           :cardData="country"
         />
       </div>
     </div>
-    <UIButton v-if="isButtonVisible">Load</UIButton>
   </div>
 </template>
 
 <script setup>
 const timer = ref(null);
-const isLoadAll = ref(false);
-
-// ref: numberOfItemsInBlock = 12;
-// response header: length: N
-// check: numberOfItemsInBlock <= length
-// const isButtonVisible = ref(true);
 
 const searchValue = ref('');
 const sortSelected = ref('');
 const sortOptions = ref([
   { value: '', name: 'Filter by Region' },
-  { value: 'Africa', name: 'Africa' },
-  { value: 'Americas', name: 'America' },
-  { value: 'Asia', name: 'Asia' },
-  { value: 'Europe', name: 'Europe' },
-  { value: 'Oceania', name: 'Oceania' },
-  { value: 'Antarctic', name: 'Antarctic' },
+  { value: 'africa', name: 'Africa' },
+  { value: 'americas', name: 'America' },
+  { value: 'asia', name: 'Asia' },
+  { value: 'europe', name: 'Europe' },
+  { value: 'oceania', name: 'Oceania' },
+  { value: 'antarctic', name: 'Antarctic' },
 ]);
 
 const { data: countries, pending } = useLazyAsyncData('countries', () =>
-  $fetch(
-    `/api/all?search=${searchValue.value}&filter=${sortSelected.value}&loadAll=${isLoadAll.value}`
-  )
+  $fetch(`/api/all?search=${searchValue.value}&filter=${sortSelected.value}`)
 );
 
 const refreshCountries = () => {
@@ -57,11 +48,6 @@ const refreshCountries = () => {
     refreshNuxtData('countries');
   }, TIME_OUT);
 };
-
-// watch(countries, () => {
-//   console.log('watch', countries.value.length);
-//   isButtonVisible.value = countries.value.length > 56;
-// });
 
 watch(searchValue, refreshCountries);
 watch(sortSelected, refreshCountries);
@@ -78,35 +64,44 @@ watch(sortSelected, refreshCountries);
   padding: 0px 80px;
 }
 
-.main__filters {
-  display: flex;
-  justify-content: space-between;
-  margin: 40px 0px;
-}
+.container {
+  &__filters {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0px;
+  }
 
-.main__list {
-  display: grid;
-  grid-template-columns: repeat(4, 240px);
-  justify-content: space-between;
+  &__loading {
+    color: var(--color-text);
+    font-size: 2rem;
+    font-weight: 800;
+  }
 
-  &-item {
-    margin-bottom: 60px;
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 240px);
+    justify-content: space-between;
+
+    &-item {
+      margin-bottom: 60px;
+    }
   }
 }
 
 @media (max-width: 1160px) {
-  .main__list {
+  .container__list {
     grid-template-columns: repeat(3, 240px);
   }
 }
 
 @media (max-width: 910px) {
-  .main__list {
+  .container__list {
     grid-template-columns: repeat(2, 240px);
   }
 }
+
 @media (max-width: 670px) {
-  .main__list {
+  .container__list {
     grid-template-columns: repeat(1, 240px);
     justify-content: center;
   }

@@ -9,7 +9,7 @@ interface IResponseForIndexPage {
 }
 
 export default defineEventHandler(async (event) => {
-  const { search, filter, loadAll } = useQuery(event);
+  const { search, filter } = useQuery(event);
 
   const API_URL = {
     all: 'https://restcountries.com/v3.1/all',
@@ -17,10 +17,7 @@ export default defineEventHandler(async (event) => {
   };
 
   const MAIN_URL = filter !== '' ? API_URL.region : API_URL.all;
-
   const countries = await myFetch(MAIN_URL);
-
-  console.log('server load all:', filter);
 
   const response = countries.reduce(
     (filtered: IResponseForIndexPage[], country) => {
@@ -45,8 +42,6 @@ export default defineEventHandler(async (event) => {
     },
     []
   );
-
-  // console.log('server', response);
 
   return response;
 });

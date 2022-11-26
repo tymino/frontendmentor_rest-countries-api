@@ -54,7 +54,7 @@ export default {
 
   &__flag {
     width: 240px;
-    height: 140px;
+    height: 150px;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
   }
 
