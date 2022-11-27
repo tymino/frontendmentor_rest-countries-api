@@ -95,12 +95,26 @@ watch(sortSelected, refreshCountries);
 }
 
 @media (max-width: 910px) {
-  .container__list {
-    grid-template-columns: repeat(2, 240px);
+  .container {
+    &__filters {
+      display: flex;
+      flex-direction: column;
+
+      & > div:last-child {
+        margin-top: 20px;
+      }
+    }
+    &__list {
+      grid-template-columns: repeat(2, 240px);
+    }
   }
 }
 
 @media (max-width: 670px) {
+  .main {
+    padding: 0px 20px;
+  }
+
   .container__list {
     grid-template-columns: repeat(1, 240px);
     justify-content: center;

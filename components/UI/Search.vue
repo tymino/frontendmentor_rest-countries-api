@@ -24,7 +24,8 @@ export default {
 <style lang="scss" scoped>
 .search {
   display: flex;
-  width: 34%;
+  width: 100%;
+  max-width: 420px;
   padding: 14px 30px;
   background: var(--color-elements);
   border-radius: var(--border-radius);

@@ -47,4 +47,22 @@ export default {
     text-transform: capitalize;
   }
 }
+
+@media (max-width: 600px) {
+  .toggle {
+    &__name {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 330px) {
+  .toggle {
+    justify-content: flex-end;
+
+    &__name {
+      width: 40px;
+    }
+  }
+}
 </style>

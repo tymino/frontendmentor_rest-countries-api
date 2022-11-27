@@ -30,4 +30,28 @@
     }
   }
 }
+
+@media (max-width: 600px) {
+  .header {
+    &__content {
+      padding: 20px;
+
+      &-title {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+@media (max-width: 330px) {
+  .header {
+    &__content {
+      padding: 20px;
+
+      &-title {
+        width: 120px;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
 </style>
