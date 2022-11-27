@@ -1,67 +1,69 @@
 <template>
-  <div v-if="pending">Loading...</div>
-  <div class="country" v-else>
-    <UILink
-      class="country__link-home"
-      linkTo="/"
-      linkIconName="back"
-      linkName="back"
-    />
+  <div class="country">
+    <UILoading v-if="pending" />
+    <div class="country__content content" v-else>
+      <UILink
+        class="content__link-home"
+        linkTo="/"
+        linkIconName="back"
+        linkName="back"
+      />
 
-    <img class="country__flag" :src="country.flag" alt="flag" />
+      <img class="content__flag" :src="country.flag" alt="flag" />
 
-    <div class="country__description description">
-      <h1 class="description__header">{{ country.header }}</h1>
-      <div class="description__col">
-        <div class="description__col--left">
-          <div class="description__line">
-            <span>native name:</span>
-            {{ country.nativeName }}
+      <div class="content__description description">
+        <h1 class="description__header">{{ country.header }}</h1>
+        <div class="description__col">
+          <div class="description__col--left">
+            <div class="description__line">
+              <span>native name:</span>
+              {{ country.nativeName }}
+            </div>
+            <div class="description__line">
+              <span>population:</span>
+              {{ country.population }}
+            </div>
+            <div class="description__line">
+              <span>region:</span>
+              {{ country.region }}
+            </div>
+            <div class="description__line">
+              <span>sub region:</span>
+              {{ country.subRegion }}
+            </div>
+            <div class="description__line">
+              <span>capital:</span>
+              {{ country.capital }}
+            </div>
           </div>
-          <div class="description__line">
-            <span>population:</span>
-            {{ country.population }}
-          </div>
-          <div class="description__line">
-            <span>region:</span>
-            {{ country.region }}
-          </div>
-          <div class="description__line">
-            <span>sub region:</span>
-            {{ country.subRegion }}
-          </div>
-          <div class="description__line">
-            <span>capital:</span>
-            {{ country.capital }}
+          <div class="description__col--right">
+            <div class="description__line">
+              <span>top level domain:</span>
+              {{ country.topLevelDomain }}
+            </div>
+            <div class="description__line">
+              <span>currencies:</span>
+              {{ country.currencies }}
+            </div>
+            <div class="description__line">
+              <span>languages:</span>
+              {{ country.languages }}
+            </div>
           </div>
         </div>
-        <div class="description__col--right">
-          <div class="description__line">
-            <span>top level domain:</span>
-            {{ country.topLevelDomain }}
-          </div>
-          <div class="description__line">
-            <span>currencies:</span>
-            {{ country.currencies }}
-          </div>
-          <div class="description__line">
-            <span>languages:</span>
-            {{ country.languages }}
-          </div>
-        </div>
-      </div>
 
-      <div class="description__footer">
-        <div class="description__footer-name">border countries:</div>
+        <div class="description__footer">
+          <div class="description__footer-name">border countries:</div>
 
-        <div class="description__footer-links">
-          <UILink
-            class="description__footer-links-item"
-            v-for="name in country.borders"
-            :key="name"
-            :linkTo="name"
-            :linkName="name"
-          />
+          <div class="description__footer-links">
+            <UILink
+              class="description__footer-links-item"
+              v-for="name in country.borders"
+              :key="name"
+              :linkTo="name"
+              :linkName="name"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -83,15 +85,17 @@ const { data: country, pending } = useLazyFetch(
 
 <style lang="scss" scoped>
 .country {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0px auto;
+  padding: 60px 80px;
+}
+.content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, auto);
   row-gap: 60px;
   justify-content: space-between;
-  width: 100%;
-  max-width: 1440px;
-  margin: 0px auto;
-  padding: 60px 80px;
 
   font-size: 16px;
 

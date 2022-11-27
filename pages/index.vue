@@ -5,7 +5,7 @@
         <UISearch v-model:searchValue="searchValue" />
         <UISelect :options="sortOptions" v-model:option="sortSelected" />
       </div>
-      <div class="container__loading" v-if="pending">Loading...</div>
+      <UILoading v-if="pending" />
       <div class="container__list" v-else>
         <Card
           class="container__list-item"
@@ -69,12 +69,6 @@ watch(sortSelected, refreshCountries);
     display: flex;
     justify-content: space-between;
     margin: 40px 0px;
-  }
-
-  &__loading {
-    color: var(--color-text);
-    font-size: 2rem;
-    font-weight: 800;
   }
 
   &__list {
