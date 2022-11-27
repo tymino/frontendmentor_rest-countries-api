@@ -31,7 +31,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 630px) {
   .header {
     &__content {
       padding: 20px;

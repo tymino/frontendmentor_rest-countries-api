@@ -164,4 +164,53 @@ const { data: country, pending } = useLazyFetch(
     }
   }
 }
+
+@media (max-width: 1200px) {
+  .content {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, auto);
+    justify-items: center;
+    row-gap: 40px;
+
+    &__flag {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      margin-right: 0px;
+    }
+
+    &__description {
+      grid-column: 1 / 2;
+      grid-row: 3 / 4;
+    }
+  }
+}
+
+@media (max-width: 780px) {
+  .content {
+    &__flag {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+@media (max-width: 630px) {
+  .country {
+    padding: 40px 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .description {
+    &__col {
+      flex-direction: column;
+      justify-content: space-between;
+      margin-bottom: 40px;
+
+      &--left {
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
 </style>
