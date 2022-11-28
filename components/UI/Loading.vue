@@ -2,10 +2,6 @@
   <div class="loading">Loading...</div>
 </template>
 
-<script>
-export default {};
-</script>
-
 <style lang="scss" scoped>
 .loading {
   color: var(--color-text);

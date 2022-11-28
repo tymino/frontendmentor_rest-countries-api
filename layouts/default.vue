@@ -4,8 +4,3 @@
     <slot />
   </div>
 </template>
-
-<style scoped>
-/* .layout {
-} */
-</style>

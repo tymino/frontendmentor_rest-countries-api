@@ -1,9 +1,9 @@
 import IApiData from '~/types/IApiData';
 
-export default function checkBordersCountry(
+const checkBordersCountry = (
   borders: string[],
   countries: IApiData[]
-): string[] {
+): string[] => {
   if (!borders) return [];
 
   return borders.map((countryName) => {
@@ -11,4 +11,6 @@ export default function checkBordersCountry(
 
     return country ? country.name.common : countryName;
   });
-}
+};
+
+export default checkBordersCountry;

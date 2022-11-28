@@ -51,16 +51,3 @@ export default interface IApiData {
   capitalInfo: { latlng: number[] };
   postalCode: { format: string; regex: string };
 }
-// export interface ICountryResponse {
-//   flag: string;
-//   header: string;
-//   nativeName: string;
-//   population: string;
-//   region: string;
-//   subRegion: string;
-//   capital: string;
-//   topLevelDomain: string[];
-//   currencies: string;
-//   languages: string[];
-//   borders: string[];
-// }

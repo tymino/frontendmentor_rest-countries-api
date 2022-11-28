@@ -1,12 +1,5 @@
 import { convertPopulation, myFetch } from '~/server/utils';
-
-interface IResponseForIndexPage {
-  flag: string;
-  header: string;
-  population: string;
-  region: string;
-  capital: string;
-}
+import IResponseForIndexPage from '~/types/IResponseForIndexPage';
 
 export default defineEventHandler(async (event) => {
   const { search, filter } = useQuery(event);

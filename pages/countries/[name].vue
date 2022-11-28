@@ -125,10 +125,6 @@ const { data: country, pending } = useLazyFetch(
     display: flex;
     justify-content: space-between;
     margin-bottom: 40px;
-    /* &--left {
-    }
-    &--right {
-    } */
   }
   &__line {
     margin-bottom: 8px;

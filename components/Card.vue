@@ -19,11 +19,6 @@
 <script>
 export default {
   props: {
-    // currentLang: {
-    //   type: String,
-    //   required: true,
-    //   default: 'en',
-    // },
     cardData: {
       type: Object,
       required: true,
