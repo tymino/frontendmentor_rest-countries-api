@@ -39,9 +39,9 @@ export default defineEventHandler(async (event) => {
         region: region,
         subRegion: subregion,
         capital: capital[0],
-        topLevelDomain: tld,
+        topLevelDomain: tld[0],
         currencies: Object.values(currencies)[0].name,
-        languages: Object.values(languages),
+        languages: Object.values(languages).join(', '),
         borders: checkBordersCountry(borders, countries),
       };
     }

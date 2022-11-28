@@ -79,8 +79,6 @@ const { data: country, pending } = useLazyFetch(
     initialCache: false,
   }
 );
-
-// console.log(country);
 </script>
 
 <style lang="scss" scoped>
